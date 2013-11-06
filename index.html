@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>豆瓣网标签的整理和分析</title>
+  <meta charset="utf-8">
+  <meta name="description" content="豆瓣网标签的整理和分析">
+  <meta name="author" content="何通">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href = "libraries/widgets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>豆瓣网标签的整理和分析</h1>
+        <h2></h2>
+        <p>何通<br/>豆瓣算法组实习生</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    <h2>什么是标签？</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <ul class = "build">
+<li>豆瓣电影中的标签
+
+<ul>
+<li><img src="pics/what_is_folksonomy2.png" alt=""></li>
+</ul></li>
+<li>豆瓣音乐中的标签
+
+<ul>
+<li><img src="pics/what_is_folksonomy3.png" alt=""></li>
+</ul></li>
+<li>豆瓣阅读中的标签
+
+<ul>
+<li><img src="pics/what_is_folksonomy4.png" alt=""></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>什么是标签</h2>
+  </hgroup>
+  <article>
+    <ul class = "build">
+<li>用户主动生成</li>
+<li>对文字内容不加限制</li>
+<li>是对物品有益的补充说明信息</li>
+<li>英文里称这样的东西叫做<strong>folksonomy</strong>(folk+taxonomy)，并不是<em>tag</em></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>标签无处不在</h2>
+  </hgroup>
+  <article>
+    <p>除了豆瓣，其实还有很多地方出现了标签：</p>
+
+<ul class = "build">
+<li>新浪微博中的标签
+
+<ul>
+<li><img src="pics/folksonomy_is_everywhere1.png" alt=""></li>
+</ul></li>
+<li>统计之都中的标签
+
+<ul>
+<li><img src="pics/folksonomy_is_everywhere2.png" alt=""></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>能够做什么？</h2>
+  </hgroup>
+  <article>
+    <p>如果我们利用了物品的标签，就可能可以：</p>
+
+<ul class = "build">
+<li>更好地细分用户兴趣</li>
+<li>更好地刻画物品特征</li>
+<li>实现跨种类推荐</li>
+<li>向用户推荐标签</li>
+<li>……</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    <h2>但是……</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>数据有噪音！</h2>
+  </hgroup>
+  <article>
+    <p>会有千奇百怪的噪音：</p>
+
+<ul class = "build">
+<li>/笑--快乐</li>
+<li>不用動腦筋但看得很快樂</li>
+<li>★★★★★★★☆</li>
+<li>\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\</li>
+<li>图图珍藏之不能忽视的好片</li>
+<li>恩..........</li>
+</ul>
+
+<hr>
+
+<ul class = "build">
+<li><strong>在我们梦想美好的未来之前，要先清洗数据</strong></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    <h2>标签的清洗</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>标签的清洗</h2>
+  </hgroup>
+  <article>
+    <p>我对电影标签的清洗步骤：</p>
+
+<ul class = "build">
+<li>去掉含有非汉字符号的标签。</li>
+<li>将所有繁体字转换成简体字
+
+<ul>
+<li><img src="pics/opencc.png" alt="opencc"></li>
+</ul></li>
+<li>抓取物品元信息：即电影的标题、演员、产地等豆瓣已经标记过的内容，并整理成词。
+
+<ul>
+<li>一个比较特殊的情况是外国人名。“迈克尔·杰克逊”我会处理成“迈克尔”，“杰克逊”以及“迈克尔杰克逊”，尽量涵盖可能出现的标签样式；</li>
+</ul></li>
+<li>将出现在元信息中的标签去除。</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>标签的清洗</h2>
+  </hgroup>
+  <article>
+    <p><img src="pics/meta_info.png" alt="元信息样例"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>标签的清洗</h2>
+  </hgroup>
+  <article>
+    <ul class = "build">
+<li>去除太长的标签。</li>
+<li>从<strong>关联物品数</strong>、<strong>做标记用户数</strong>与<strong>平均被标记数</strong>三个指标上自定义阈值做清理。
+
+<ul>
+<li><img src="pics/cleansing_folksonomy.png" alt=""></li>
+</ul></li>
+<li>对于稍长的标签（3～5个字），对他们做切分，再在标签内部进行过滤。
+
+<ul>
+<li>例如“经典励志”可以被切成“励志”和“经典”，这是两个已有的标签，那么可以将“经典励志”这个标签去掉。</li>
+</ul></li>
+<li><strong>上面的步骤能去掉超过90%的无用标签，可以准备进入到人工清理的步骤。</strong></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>万事具备？</h2>
+  </hgroup>
+  <article>
+    <p>我以为机器初步清理后, 便可以进行人工清洗了。</p>
+
+<p>可是编辑的反馈居然是这样的：</p>
+
+<ul class = "build">
+<li><img src="pics/kid-writing-hard.jpg" alt=""></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>万事具备？</h2>
+  </hgroup>
+  <article>
+    <p>人工清理的一大目的是<strong>去冗余</strong>，比如从一群同义词和近义词中选出一个代表用词。</p>
+
+<p>但是剩下的词还是太多了。</p>
+
+<ul class = "build">
+<li><img src="pics/jacky_chan.jpg" alt="挠头"></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p><strong>假设：意义相近的标签比较容易共同出现在一些物品上。</strong></p>
+
+<p>举个栗子：</p>
+
+<blockquote>
+<p>医疗剧，医务剧，医疗，医务，医学</p>
+</blockquote>
+
+<p>这些标签常常共同出现在一个物品上。</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p><img src="pics/similar_tags1.png" alt="医务剧"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p><img src="pics/similar_tags2.png" alt="医学"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p>近义词也不一定要有相同汉字，例如</p>
+
+<blockquote>
+<p>神鬼，玄幻，鬼片，灵异</p>
+
+<p>吸毒，大麻，嬉皮，嬉皮士，摇滚</p>
+</blockquote>
+
+<p>这样的例子还有很多个。</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>使用聚类？</h2>
+  </hgroup>
+  <article>
+    <p>经过尝试，用skmeans对于标签来聚类的效果并不好，可能是因为如下的原因：</p>
+
+<ul class = "build">
+<li>很难选到合适的距离函数</li>
+<li>skmeans需要设置聚类的个数；</li>
+<li>无论什么聚类方法，<strong>噪音</strong>都会影响效果。</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p><strong>关联规则</strong>可以过滤噪音。</p>
+
+<table><thead>
+<tr>
+<th>LeftHandSide</th>
+<th>RightHandSide</th>
+<th>Confidence</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>波洛</td>
+<td>英剧</td>
+<td>0.9400000</td>
+</tr>
+<tr>
+<td>波洛</td>
+<td>推理</td>
+<td>0.9700000</td>
+</tr>
+<tr>
+<td>医务</td>
+<td>医疗</td>
+<td>0.6377953</td>
+</tr>
+<tr>
+<td>医疗</td>
+<td>医务</td>
+<td>0.5142857</td>
+</tr>
+<tr>
+<td>棒球</td>
+<td>体育</td>
+<td>0.6202532</td>
+</tr>
+<tr>
+<td>棒球</td>
+<td>励志</td>
+<td>0.5886076</td>
+</tr>
+</tbody></table>
+
+<p>这里出现的就是标签之间的关系了，最右边是置信度，即条件概率</p>
+
+<pre><code>P( RightHandSide | LeftHandSide )
+P( 英剧 | 波洛 ) = 0.94
+P( 推理 | 波洛 ) = 0.97
+etc...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p>使用这个置信度构图。</p>
+
+<p><img src="pics/similar_tags_graph.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p>构建成图之后，我就使用<a href="https://gephi.org/">Gephi</a>软件进行处理。</p>
+
+<p>利用其计算“模块化”的功能，即<strong>Community Detection</strong>，分析出图中相互关系比较密切的节点。</p>
+
+<p>节点构成了一个个群体，每个群体就是一群近义词了。</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p>一些效果的展示：</p>
+
+<pre><code>两性,中产阶级,中年,伦理,出轨,外遇,婚外恋,婚外情,小三,母子,恋母,情迷,艾滋,艾滋病
+医务,医务剧,医学,医疗,医疗剧,美剧
+吉他,吸毒,大麻,嬉皮,嬉皮士,摇滚,摇滚乐,毒品,民谣,颓废,药物,金属,嗑药,飞片儿
+天才,数学,物理,理论,科学,科学家,量子物理,物理学
+平行世界,平行宇宙,平行时空,平行空间,时光倒流,时空穿梭,时空穿越,时间旅行,穿梭时空,穿越,穿越剧,穿越时空
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>近义词识别</h2>
+  </hgroup>
+  <article>
+    <p>这样人工清洗就更方便了。</p>
+
+<ul class = "build">
+<li><img src="pics/kid-writing-happily.jpg" alt=""></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>清洗之后？</h2>
+  </hgroup>
+  <article>
+    <p>标签是用户对<strong>物品特征的补充说明</strong></p>
+
+<p>我们一般都是怎么进行描述的呢？</p>
+
+<ul class = "build">
+<li><img src="pics/man-tree.png" alt=""></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    <h2>标签的分层</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>标签的分层</h2>
+  </hgroup>
+  <article>
+    <p>接下来我们对这些标签建立层次结构。</p>
+
+<p>下图是一个在<a href="http://del.icio.us">del.icio.us</a>上建立标签树的部分结果：</p>
+
+<ul class = "build">
+<li><img src="pics/tree_from_paper.png" alt="参考文献中的图"></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>标签的分层</h2>
+  </hgroup>
+  <article>
+    <p>首先，按照标签出现的总次数来衡量标签的抽象程度。</p>
+
+<ul class = "build">
+<li>越抽象的标签层级越接近顶层</li>
+</ul>
+
+<p>使用条件概率决定两个标签之间是否有从属关系</p>
+
+<ul class = "build">
+<li><p>一个标签只能<strong>属于</strong>排它之前的标签</p></li>
+<li><p>当标签<strong>公路</strong>出现时，有</p>
+
+<ul>
+<li>70%的可能性出现<strong>旅行</strong></li>
+<li>60%的可能性出现<strong>开车</strong></li>
+<li>20%的可能性出现<strong>喜剧</strong></li>
+</ul></li>
+<li><p>我们就认为<strong>公路</strong>是从属于<strong>旅行</strong>的一个标签</p></li>
+<li><p>如果一个标签基本不从属于其他的标签，我们就直接将它连接到<strong>根节点</strong>。</p>
+
+<ul>
+<li>是一个独立的概念</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>标签的分层</h2>
+  </hgroup>
+  <article>
+    <p>这时候就有了一棵标签树。</p>
+
+<p><img src="pics/movie_folksonomy.png" alt="Drawing" style="width: 600px;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>未来的可能应用</h2>
+  </hgroup>
+  <article>
+    <p>惊喜推荐，即防止不断在小范围内推荐物品。</p>
+
+<ul class = "build">
+<li>推荐电影：
+
+<ul>
+<li>“潜艇”和“国共”都属于“军事”下</li>
+<li>所以可以给喜欢看“潜艇”的用户推荐有关“国共”的电影</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>未来的可能应用</h2>
+  </hgroup>
+  <article>
+    <p>利用豆瓣“书影音”俱全的特性，进行跨种类推荐：</p>
+
+<ul class = "build">
+<li>书和电影之间相互推荐：
+
+<ul>
+<li>给经常标记食谱的用户推荐《舌尖上的中国》系列纪录片</li>
+</ul></li>
+<li>日志和书影音相互推荐：
+
+<ul>
+<li>给喜欢《明朝那些事》的读者推荐讨论朱元璋的日志</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>参考文献</h2>
+  </hgroup>
+  <article>
+    <p><a href="http://arxiv.org/pdf/0803.0476v2">Fast unfolding of communities in large networks</a>, <a href="https://sites.google.com/site/findcommunities/" title="友情提示，需要科学上网">Tool made by the authors</a></p>
+
+<p><a href="http://arxiv.org/pdf/0812.1770">Laplacian Dynamics and Multiscale Modular Structure in Networks</a></p>
+
+<p><a href="http://infolab.stanford.edu/%7Eheymann/taghierarchy.html">Collaborative Creation of Communal Hierarchical Taxonomies in Social Tagging Systems</a></p>
+
+<p><a href="http://www2009.eprints.org/65/1/p641.pdf">Evaluating Similarity Measures for Emergent Semantics of Social Tagging</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="ending" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    <style>
+    #ending h2 {
+    margin:220px 0 0;
+        text-align:center;
+        font-size:95px;
+        }
+    #FitToWidth h2,
+    #FitToHeight h2 {
+        text-align:center;
+        }
+</style> 
+
+<h2>谢谢！</h2>
+
+<p>Contact Me:</p>
+
+<blockquote>
+<p>Blog:<a href="http://blog.programet.org/">Programet</a></p>
+
+<p>Email:<a href="mailto:hetong007@gmail.com">hetong007@gmail.com</a></p>
+
+<p>Weibo:<a href="http://weibo.com/u/1635976784">严酷的魔王</a></p>
+
+<p>LinkedIn:<a href="http://www.linkedin.com/profile/view?id=236123166">Tong He</a></p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<script src='libraries/widgets/bootstrap/js/bootstrap.min.js'></script>
+<script>  
+$(function (){ 
+  $("#example").popover(); 
+  $("[rel='tooltip']").tooltip(); 
+});  
+</script>  
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
