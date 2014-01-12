@@ -1,7 +1,7 @@
 Folksonomy In Douban
 =================
 
-[GitHub Pages](http://hetong007.github.io/folksonomy_douban) for it.
+[GitHub Pages](http://hetong007.github.io/Douban_Folksonomy) for it.
 
 My Slides used in **useR! China** of Shanghai,2013.
 
